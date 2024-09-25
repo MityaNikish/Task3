@@ -4,10 +4,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="reader.cpp" />
     <ClCompile Include="writer.cpp" />
+    <ClCompile Include="discretization.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_bks.h" />
     <ClInclude Include="reader.h" />
     <ClInclude Include="writer.h" />
+    <ClInclude Include="discretization.h" />
   </ItemGroup>
 </Project>

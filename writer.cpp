@@ -4,11 +4,11 @@
 #include <fstream>
 
 
-void writer(DataBKS& data)
+void writer(const DataBKS& data)
 {
 	for (size_t index_probe = 0; index_probe < data.quantity_probes_; ++index_probe)
 	{
-		Probe& probe = data.probes_[index_probe];
+		const Probe& probe = data.probes_[index_probe];
 		std::vector<double> arr;
 		std::ofstream fout("treatment\\probe_" + std::to_string(index_probe + 1) + ".raw", std::ios::binary | std::ios::trunc);
 

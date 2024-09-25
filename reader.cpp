@@ -25,14 +25,6 @@ void reader(DataBKS& data)
 			Layer layer;
 			std::stringstream sstr(str);
 
-			//int arr[4] = { 0 };
-			//for (int i = 0; i < 4 && sstr >> arr[i]; ++i)
-			//	
-			//layer.thickness_ = arr[0];
-			//layer.resistance_ = arr[1];
-			//layer.penetration_zone_radius_ = arr[2];
-			//layer.penetration_zone_resistance_ = arr[3];
-
 			sstr >> layer.thickness_;
 			sstr >> layer.resistance_;
 			sstr >> layer.penetration_zone_radius_;
@@ -40,8 +32,6 @@ void reader(DataBKS& data)
 
 			data.layers_.push_back(layer);
 		}
-
-		fin_medium.close();
 	}
 
 	//¬ходной файл probes.txt
@@ -61,12 +51,11 @@ void reader(DataBKS& data)
 
 			data.probes_.push_back(probe);
 		}
-
-		fin_probes.close();
 	}
 
 	//¬ходные файлы probes_{i}.txt и probes_data_{i}.txt
 	{
+
 		for (size_t number_probe = 0; number_probe < data.quantity_probes_; ++number_probe)
 		{
 			double pos;
@@ -77,16 +66,22 @@ void reader(DataBKS& data)
 			{
 				probe.vertical_coordinates.push_back(pos);
 			}
-			fin_vc.close();
 
 			std::ifstream fin_pd("data\\probe_data_" + std::to_string(number_probe + 1) + ".txt");
-
 			for (size_t k = 0; k < probe.quantity_measurements_ && fin_pd >> pos; ++k)
 			{
 				probe.potential_differences.push_back(pos);
 			}
-			fin_pd.close();
 		}
+	}
+
+	//¬ходной файл grid.txt 
+	{
+		std::ifstream fin_grid("data\\grid.txt");
+		fin_grid >> data.h_z_;
+		fin_grid >> data.h_r_;
+		fin_grid >> data.max_r_;
+		fin_grid >> data.quantity_nodes_;
 	}
 }
  

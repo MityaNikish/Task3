@@ -127,12 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="discretization.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="reader.cpp" />
     <ClCompile Include="writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_bks.h" />
+    <ClInclude Include="discretization.h" />
     <ClInclude Include="reader.h" />
     <ClInclude Include="writer.h" />
   </ItemGroup>
