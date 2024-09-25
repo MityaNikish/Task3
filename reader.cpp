@@ -12,8 +12,8 @@ void reader(DataBKS& data)
 		std::ifstream fin_medium("data\\medium.txt");
 		fin_medium >> data.well_radius_;
 		fin_medium >> data.drilling_mud_resistance_;
-		fin_medium >> data.upper_enclosing_layer_resistance_;
-		fin_medium >> data.lower_enclosing_layer_resistance_;
+		fin_medium >> data.enclosing_layers_.upper_enclosing_layer_resistance_;
+		fin_medium >> data.enclosing_layers_.lower_enclosing_layer_resistance_;
 		fin_medium >> data.quantity_layers_;
 
 		//фу-фу-фу костыль, operator>>() оставляет после себя '\n', которую std::getline() считывает как остановку чтения строки, из-за чего считывается строка ""
@@ -81,7 +81,7 @@ void reader(DataBKS& data)
 		fin_grid >> data.h_z_;
 		fin_grid >> data.h_r_;
 		fin_grid >> data.max_r_;
-		fin_grid >> data.quantity_nodes_;
+		fin_grid >> data.enclosing_layers_.quantity_nodes_;
 	}
 }
  

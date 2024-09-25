@@ -39,6 +39,17 @@ struct Probe
 	std::vector<double> potential_differences;
 };
 
+struct EnclosingLayer
+{
+	//Сопротивление верхнего вмещающего пласта
+	double upper_enclosing_layer_resistance_ = 0;
+
+	//Сопротивление нижнего вмещающего пласта
+	double lower_enclosing_layer_resistance_ = 0;
+
+	//Число узлов сетки для представления вмещающих слоев
+	size_t quantity_nodes_ = 0;
+};
 
 struct DataBKS
 {
@@ -48,11 +59,7 @@ struct DataBKS
 	//Сопротивление бурового раствора
 	double drilling_mud_resistance_ = 0;
 
-	//Сопротивление верхнего вмещающего пласта
-	double upper_enclosing_layer_resistance_ = 0;
-
-	//Сопротивление нижнего вмещающего пласта
-	double lower_enclosing_layer_resistance_ = 0;
+	EnclosingLayer enclosing_layers_;
 
 	//Число пластов
 	size_t quantity_layers_ = 0;
@@ -67,14 +74,13 @@ struct DataBKS
 	std::vector<Probe> probes_;
 
 	//Шаг дискретизации по вертикальной оси
-	double h_z_;
+	double h_z_ = 0;
 
 	//Шаг дискретизации горизонтальной оси
-	double h_r_;
+	double h_r_ = 0;
 
 	//Максимальный вынос по горизонтальной оси
-	double max_r_;
+	double max_r_ = 0;
 
-	//Число узлов сетки для представления вмещающих слоев
-	size_t quantity_nodes_;
+
 };
